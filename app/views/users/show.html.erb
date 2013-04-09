@@ -1,0 +1,16 @@
+<h1> The user details are: </h1>
+<p><b>FirstName:</b> 
+<%= @user.first_name %>
+</p>
+<p><b>LastName:</b> 
+<%= @user.last_name %>
+</p>
+<p><b>DateOfBirth:</b> 
+<%= @user.date_of_birth %>
+</p>
+<p><b>emailAddress:</b> 
+<%= @user.email_address %>
+</p>
+<%= link_to "Edit" ,edit_user_path%>
+<%= link_to "Back" ,users_path %>
+
