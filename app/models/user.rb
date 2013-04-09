@@ -4,9 +4,18 @@ class EmailValidator < ActiveModel::EachValidator
       record.errors[attribute] << (options[:message] || "is not an email")
     end
   end
-end	
+end
+
 class User < ActiveRecord::Base
   attr_accessible :first_name, :last_name, :date_of_birth, :email_address
+
   validates :first_name, :last_name, :date_of_birth,  :presence => true
   validates :email_address, :presence => true, :email => true
+  validate :date_of_birth_validation
+
+  def date_of_birth_validation
+    if self.date_of_birth.future?
+      errors.add(:date_of_birth,"you have entered future date")
+    end
+  end
 end
