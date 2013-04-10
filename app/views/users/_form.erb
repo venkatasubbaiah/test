@@ -19,7 +19,7 @@
       <%= f.label :last_name %><br />
       <%= f.text_field :last_name %>
     </div>
-    <div class= "filed">
+    <div class ="field" >
       <%= f.label :date_of_birth %><br/>
       <%= f.text_field :date_of_birth %>
     </div>
@@ -28,7 +28,17 @@
       <%= f.label :email %><br/>
       <%= f.text_field :email_address %>
     </div>
+    <div class= "filed">
+      <%= f.label :gender %>
+      <%=  f.select(:gender,[['male'],['female']]) %>
+
+
+    </div>
     <div class ="action">
       <%= f.submit %>
     </div>
 <% end %>
+
+
+</body>
+</html>

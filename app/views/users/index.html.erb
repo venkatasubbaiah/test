@@ -1,10 +1,11 @@
 <h1> List of Users </h1>
 <table>
   <tr>    
-    <th>Firstname</th>
-    <th>Lastname</th>    
-    <th>DateOfBirth</th>
-    <th>EmailId</th>	
+    <th>Fisrtname</th>
+    <th>Lastname</th>
+    <th>Dateofbirth</th>
+    <th>Email id</th>
+    <th>Gender</th>
   </tr>
 <% @users.each do |user| %>
   <tr>
@@ -12,10 +13,12 @@
     <td><%= user.last_name %></td>	
 	<td><%= user.date_of_birth %></td>
 	<td><%= user.email_address %></td>
-        <td><%= link_to 'Show', user %></td>
+    <td><%= user.gender %></td>
+    <td><%= link_to 'Show', user %></td>
     <td><%= link_to 'Edit', edit_user_path(user) %></td>
     <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>
 <%= link_to "New User", new_user_path %>
+<%= will_paginate @users %>

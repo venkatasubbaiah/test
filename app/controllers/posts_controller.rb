@@ -1,7 +1,8 @@
 class PostsController < ApplicationController
   def index
-      @posts = Post.all
+    @posts = Post.all
   end
+
   def new
     @post = Post.new
   end
@@ -18,17 +19,20 @@ class PostsController < ApplicationController
       render :new
     end
   end
+
   def edit
     @post = Post.find(params[:id])
   end
+
   def update
     @post = Post.find(params[:id])
     if @post.update_attributes(params[:post])
       redirect_to @post, notice: 'Post was successfully updated.'
     else
-       render action: "edit"
+      render action: "edit"
     end
   end
+
   def destroy
     @post = Post.find(params[:id])
     @post.destroy

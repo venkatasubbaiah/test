@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
 	def index
-		@users = User.all
+    @users = User.paginate(:page => params[:page])
 	end
 
 	def new
@@ -14,7 +14,7 @@ class UsersController < ApplicationController
 			flash[:notice] = 'User successfully created' 
 			redirect_to user_path(@user)
 		else
-			flash[:error] = 'enter correct details '
+			flash[:error] = 'Invalid details details '
 			render :new
 		end
 	end
