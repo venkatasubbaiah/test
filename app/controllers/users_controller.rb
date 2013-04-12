@@ -1,7 +1,11 @@
 class UsersController < ApplicationController
 
 	def index
+    if params[:first_name].present?
+      @users = User.where("first_name = ? or last_name = ? or date_of_birth =? or email_address =? or gender =?", params[:first_name], params[:first_name], params[:first_name],params[:first_name],params[:first_name]).paginate(:page => params[:page])
+    else
     @users = User.paginate(:page => params[:page])
+    end
 	end
 
 	def new
@@ -10,7 +14,7 @@ class UsersController < ApplicationController
 		
 	def create
 		@user = User.new(params[:user])		
-		if @user.save			
+		if @user.save
 			flash[:notice] = 'User successfully created' 
 			redirect_to user_path(@user)
 		else

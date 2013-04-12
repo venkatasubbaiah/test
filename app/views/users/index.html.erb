@@ -1,11 +1,25 @@
 <h1> List of Users </h1>
-<table>
-  <tr>    
+
+ <div class=" text-right">
+   <div class ="text-left"><%= link_to "New User ", new_user_path, :class =>"btn  btn-primary"%> </div>
+  <%= form_tag(users_path, :method => :get) do %>
+      <%= text_field_tag :first_name  %>
+      <%= submit_tag :search ,:class =>"btn btn-primary"%>
+      <%= link_to 'Clear', users_path %>
+
+  <% end %>
+</div>
+<table class="table">
+  <tr>
     <th>Fisrtname</th>
     <th>Lastname</th>
     <th>Dateofbirth</th>
     <th>Email id</th>
     <th>Gender</th>
+    <th></th>
+    <th></th>
+    <th></th>
+
   </tr>
 <% @users.each do |user| %>
   <tr>
@@ -20,5 +34,5 @@
   </tr>
 <% end %>
 </table>
-<%= link_to "New User", new_user_path %>
-<%= will_paginate @users %>
+
+<%= will_paginate  @users,  :class =>"pagination pagination-centered"%>
